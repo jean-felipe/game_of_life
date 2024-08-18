@@ -1,0 +1,15 @@
+<h1>Conway's Game of Life</h1>
+
+<table>
+  <% (0..@grid.size_x-1).each do |x| %>
+    <tr>
+      <% (0..@grid.size_y-1).each do |y| %>
+        <td class="<%= @grid.cell_at(x, y).alive ? 'alive' : 'dead' %>">
+          <%= @grid.cell_at(x, y).alive ? '■' : '□' %>
+        </td>
+        <% end %>
+    </tr>
+    <% end %>
+</table>
+
+<%= button_to "Next Generation" , grid_path(@grid), method: :put %>
