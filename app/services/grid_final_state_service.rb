@@ -6,16 +6,13 @@ class GridFinalStateService
   end
 
   def calculate_final_state
-    previous_states = []
+    previous_states = {}
+    @max_iterations.times do |i|
+      state_hash = @grid.cells.map(&:alive).hash
 
-    @max_iterations.times do
-      state_snapshot = @grid.cells.map { |cell| [cell.x, cell.y, cell.alive] }
+      return @grid if previous_states[state_hash]
 
-      if previous_states.include?(state_snapshot)
-        return @grid
-      end
-
-      previous_states << state_snapshot
+      previous_states[state_hash] = i
       GridUpdateService.new(@grid).update_grid
     end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_18_034946) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_18_232210) do
   create_table "cells", force: :cascade do |t|
     t.integer "x"
     t.integer "y"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_18_034946) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "grid_id", null: false
+    t.index ["grid_id", "x", "y"], name: "index_cells_on_grid_id_and_x_and_y"
     t.index ["grid_id"], name: "index_cells_on_grid_id"
   end
 

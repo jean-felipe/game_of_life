@@ -12,7 +12,8 @@
 #
 # Indexes
 #
-#  index_cells_on_grid_id  (grid_id)
+#  index_cells_on_grid_id              (grid_id)
+#  index_cells_on_grid_id_and_x_and_y  (grid_id,x,y)
 #
 # Foreign Keys
 #

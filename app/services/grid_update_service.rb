@@ -5,8 +5,10 @@ class GridUpdateService
   end
 
   def update_grid
-    @grid.cells.each(&:update_state)
-    @grid.cells.each(&:save)
+    @grid.cells.in_batches(of: 1000) do |batch|
+      batch.each(&:update_state)
+      batch.each(&:save)
+    end
   end
 
   def update_n_states_away(n)

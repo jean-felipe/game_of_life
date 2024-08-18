@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: cells
+#
+#  id         :integer          not null, primary key
+#  alive      :boolean
+#  x          :integer
+#  y          :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  grid_id    :integer          not null
+#
+# Indexes
+#
+#  index_cells_on_grid_id              (grid_id)
+#  index_cells_on_grid_id_and_x_and_y  (grid_id,x,y)
+#
+# Foreign Keys
+#
+#  grid_id  (grid_id => grids.id)
+#
 require 'rails_helper'
 
 RSpec.describe Cell, type: :model do
